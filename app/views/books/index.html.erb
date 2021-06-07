@@ -17,15 +17,12 @@
         <td>
           <%= link_to "Show", "/books/#{book.id}" %>
         </td>
-        <!--<td><a class="show_282334" href="/books/282334">Show</a></td>-->
         <td>
           <%= link_to "Edit", edit_book_path(book) %>
         </td>
-        <!--<td><a class="edit_282334" href="/books/282334/edit">Edit</a></td>-->
         <td>
           <%= link_to "Destroy", book_path(book), method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
-        <!--<td><a data-confirm="Are you sure?" class="destroy_282334" rel="nofollow" data-method="delete" href="/books/282334">Destroy</a></td>-->
       </tr>
     <% end %>
   </tbody>
@@ -33,10 +30,15 @@
 
 <h2>New book</h2>
 
+
 <%= form_with model: @book, url:'/books', local:true do |f| %>
+  <%= render 'layouts/error_messages', book: @book %>
   <h4>Title</h4>
   <%= f.text_field :title %>
   <h4>Body</h4>
   <%= f.text_area :body %>
+  <p>
   <%= f.submit 'Create Book' %>
+  </p>
 <% end %>
+
